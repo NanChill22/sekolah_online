@@ -30,4 +30,11 @@ class PendaftaranController extends Controller
 
         return redirect()->back()->with('success', 'Pendaftaran berhasil dikirim!');
     }
+        public function status() 
+    {
+        // PERBAIKAN: Gunakan Auth::id()
+        $pendaftaran = Pendaftaran::where('user_id', Auth::id())->first();
+        
+        return view('siswa.status', compact('pendaftaran'));
+    }
 }
