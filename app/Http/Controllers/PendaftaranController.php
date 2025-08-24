@@ -3,38 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Pendaftaran;
-use Illuminate\Support\Facades\Auth; // <-- TAMBAHKAN BARIS INI
 
 class PendaftaranController extends Controller
 {
+    public function create()
+    {
+        return view('siswa.form');
+    }
+
     public function store(Request $request)
     {
-        // ... (kode validasi Anda) ...
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
-            'nisn' => 'required|numeric|unique:pendaftarans,nisn',
-            'alamat' => 'required|string',
-            'dokumen' => 'required|file|mimes:pdf,jpg,png|max:2048',
+        $request->validate([
+            'nisn' => 'required|digits:10|unique:pendaftaran,nisn',
+            'nama' => 'required|string|max:100',
+            'asal_sekolah' => 'required|string|max:100',
         ]);
 
-        // Ganti auth()->id() dengan Auth::id()
-        $validatedData['user_id'] = Auth::id(); // <-- PERBAIKAN DI SINI
+        Pendaftaran::create([
+            'user_id' => Auth::id(),
+            'nisn' => $request->nisn,
+            'nama' => $request->nama,
+            'asal_sekolah' => $request->asal_sekolah,
+            'status' => 'pending',
+        ]);
 
-        // ... (sisa kode Anda) ...
-        if ($request->hasFile('dokumen')) {
-            $validatedData['dokumen'] = $request->file('dokumen')->store('dokumen', 'public');
-        }
-
-        Pendaftaran::create($validatedData);
-
-        return redirect()->back()->with('success', 'Pendaftaran berhasil dikirim!');
+        return redirect()->route('siswa.status')->with('success', 'Form berhasil dikirim!');
     }
-        public function status() 
+
+    public function status()
     {
-        // PERBAIKAN: Gunakan Auth::id()
         $pendaftaran = Pendaftaran::where('user_id', Auth::id())->first();
-        
         return view('siswa.status', compact('pendaftaran'));
     }
+
+// app/Http/Controllers/PendaftaranController.php
+
+public function pengumuman()
+{
+    // pastikan import model: use App\Models\Pendaftaran;
+    $diterima = Pendaftaran::where('status', 'diterima')->get();
+    $ditolak  = Pendaftaran::where('status', 'ditolak')->get();
+
+    return view('pengumuman', compact('diterima', 'ditolak'));
+}
+
+
 }

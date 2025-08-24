@@ -11,7 +11,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // DAFTARKAN ALIAS DI SINI
+        $middleware->alias([
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+            // alias lain kalau perlu...
+            // 'verified' sudah ada bawaan, tidak perlu didefinisikan lagi
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
