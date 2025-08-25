@@ -174,7 +174,17 @@
                 @csrf
                 <h1>Sign in</h1>
                 <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus />
+                @if ($errors->has('email'))
+                <div class="text-sm text-red-600 mt-2" style="color: red;">
+                    {{ $errors->first('email') }}
+                </div>
+                @endif
                 <input type="password" name="password" placeholder="Password" required />
+                @if ($errors->has('password'))
+                <div class="text-sm text-red-600 mt-2" style="color: red;">
+                    {{ $errors->first('password') }}
+                </div>
+                @endif
                 <a href="{{ route('password.request') }}">Forgot your password?</a>
                 <button type="submit">Log In</button>
             </form>
