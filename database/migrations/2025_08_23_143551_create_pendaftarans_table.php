@@ -17,6 +17,7 @@ return new class extends Migration
         $table->string('nama');
         $table->string('nisn')->unique();
         $table->string('alamat');
+        $table->string('asal_sekolah');
         $table->string('dokumen')->nullable();
         $table->enum('status',['pending','diverifikasi','diterima','ditolak'])->default('pending');
         $table->timestamps();
