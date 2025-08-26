@@ -31,7 +31,7 @@
                                     </span>
                                 @endif
                             </h2>
-                            <p class="mt-3 mb-0 text-muted">Data terakhir diperbarui pada: {{ $pendaftaran->updated_at->format('d F Y, H:i') }} WIB</p>
+                            <p class="mt-3 mb-0 text-muted">Data terakhir diperbarui pada: {{ $pendaftaran->updated_at->timezone('Asia/Jakarta')->format('d F Y, H:i') }} WIB</p>
                         </div>
                     @else
                         <div class="alert alert-warning text-center">
