@@ -62,6 +62,9 @@ Route::middleware(['auth', 'role:siswa'])
         Route::post('/form', [PendaftaranController::class, 'store'])->name('store');
         Route::get('/status', [PendaftaranController::class, 'status'])->name('status');
     });
+        Route::get('/siswa/dashboard', function () {
+        return view('siswa.dashboard');
+    })->name('siswa.dashboard');
 
 // Rute Publik
 Route::get('/pengumuman', [PendaftaranController::class, 'pengumuman'])->name('pengumuman');
