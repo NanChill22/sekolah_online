@@ -175,6 +175,9 @@
                 <h1>Sign in</h1>
                 <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus />
                 <input type="password" name="password" placeholder="Password" required />
+                @error('password')
+                    <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                @enderror
                 <a href="{{ route('password.request') }}">Forgot your password?</a>
                 <button type="submit">Log In</button>
             </form>
@@ -187,8 +190,11 @@
                 <h1>Create Account</h1>
                 <input type="text" name="name" placeholder="Name" required />
                 <input type="email" name="email" placeholder="Email" required />
-                <input type="password" name="password" placeholder="Password" required />
-                <input type="password" name="password_confirmation" placeholder="Confirm Password" required />
+                <input type="password" name="password" placeholder="Password (Min 8 Character)" required />
+                @error('password')
+                    <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                @enderror
+                <input type="password" name="password_confirmation" placeholder="Confirm Password (Min 8 Character)" required />
                 <button type="submit">Register</button>
             </form>
         </div>

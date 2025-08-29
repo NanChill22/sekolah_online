@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <p class="card-text">Silakan isi data berikut dengan benar dan lengkap.</p>
                     
-                    <form action="{{ route('siswa.store') }}" method="POST">
+                    <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="mb-3">
@@ -27,6 +27,16 @@
                         <div class="mb-3">
                             <label for="asal_sekolah" class="form-label"><b>Asal Sekolah</b></label>
                             <input type="text" class="form-control" id="asal_sekolah" name="asal_sekolah" placeholder="Contoh: SMP Negeri 1 Jakarta" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label"><b>Alamat</b></label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Contoh: Jl. Jendral Soedirman" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="file" class="form-label"><b>Upload Berkas</b></label>
+                            <input type="file" accept=".pdf,.doc,.docx" class="form-control" id="file" name="file" required>
                         </div>
                         
                         <hr>

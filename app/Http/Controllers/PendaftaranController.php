@@ -16,16 +16,23 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nisn' => 'required|digits:10|unique:pendaftaran,nisn',
+            'nisn' => 'required|digits:10|unique:pendaftarans,nisn',
             'nama' => 'required|string|max:100',
             'asal_sekolah' => 'required|string|max:100',
+            'alamat' => 'string',
+            'file' => 'required|mimes:pdf,doc,docx|max:4096',
         ]);
+
+        // Simpan file ke storage/app/public/dokumen
+        $path = $request->file('file')->store('dokumen_pendaftar', 'public');
 
         Pendaftaran::create([
             'user_id' => Auth::id(),
             'nisn' => $request->nisn,
             'nama' => $request->nama,
             'asal_sekolah' => $request->asal_sekolah,
+            'alamat' => $request->alamat,
+            'dokumen' => $path,
             'status' => 'pending',
         ]);
 
