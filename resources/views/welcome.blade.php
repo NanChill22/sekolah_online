@@ -42,7 +42,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
                     </svg>
-                    <span>PPDB NanChill</span>
+                    <span>PPDB SEKOLAH </span>
                 </a>
 
                 <!-- Menu Desktop -->
@@ -96,7 +96,7 @@
     <!-- konten -->
     <div class="text-center z-10 max-w-3xl mx-auto mt-16 md:mt-24">
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-            PPDB NanChill 2025
+            PPDB SEKOLAH 2025
         </h1>
         <p class="mt-4 text-base sm:text-lg md:text-xl text-slate-100">
             Gerbang menuju masa depan cerah. Segera daftarkan diri Anda dan jadilah bagian dari generasi unggul.
