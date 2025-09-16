@@ -47,9 +47,6 @@
 
                 <!-- Menu Desktop -->
                 <div class="hidden md:flex items-center space-x-8 text-white font-medium">
-                    <a href="#" class="hover:text-indigo-200">Beranda</a>
-                    <a href="#info" class="hover:text-indigo-200">Info</a>
-                    <a href="#kontak" class="hover:text-indigo-200">Kontak</a>
                     @if (Route::has('login'))
                         <a href="{{ route('login') }}" class="px-4 py-2 rounded-full bg-white text-indigo-600 font-semibold hover:bg-indigo-100 transition">Login</a>
                     @endif
@@ -68,9 +65,6 @@
 
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-indigo-700/90 backdrop-blur-md px-6 py-4 space-y-4 text-white">
-                <a href="#" class="block hover:text-indigo-200">Beranda</a>
-                <a href="#info" class="block hover:text-indigo-200">Info</a>
-                <a href="#kontak" class="block hover:text-indigo-200">Kontak</a>
                 @if (Route::has('login'))
                     <a href="{{ route('login') }}" class="block px-4 py-2 rounded bg-white text-indigo-600 font-semibold hover:bg-indigo-100">Login</a>
                 @endif

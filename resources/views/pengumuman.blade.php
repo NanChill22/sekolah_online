@@ -1,49 +1,24 @@
-@extends('layouts.app') {{-- publik --}}
+@extends('layouts.app')
 
 @section('content')
-@php
-    // fallback jika controller belum mengirim variabel
-    $diterima = $diterima ?? collect();
-    $ditolak  = $ditolak  ?? collect();
-@endphp
-
 <div class="container">
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h4 class="mb-0"><i class="fa fa-bullhorn"></i> Pengumuman Hasil Seleksi</h4>
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0"><i class="fa fa-bullhorn"></i> Pengumuman</h4>
         </div>
         <div class="card-body">
-            <p class="lead">Berikut adalah daftar siswa yang dinyatakan <strong>DITERIMA</strong> dan <strong>DITOLAK</strong> dalam proses seleksi.</p>
-            <hr>
-            @if($diterima->isEmpty() && $ditolak->isEmpty())
-                        <div class="alert alert-info text-center mt-4">
-                            <h4 class="alert-heading"><i class="fa fa-clock"></i> Menunggu Hasil</h4>
-                            <p class="mb-0">Proses seleksi masih berlangsung. Silakan periksa kembali halaman ini nanti.</p>
-                        </div>
+            @if($pengumuman->isNotEmpty())
+                @foreach($pengumuman as $p)
+                    <div class="mb-4 p-3 border rounded bg-light">
+                        <h5 class="fw-bold">{{ $p->judul }}</h5>
+                        <p>{{ $p->isi }}</p>
+                        <small class="text-muted">
+                            Diumumkan: {{ $p->created_at->format('d M Y H:i') }}
+                        </small>
+                    </div>
+                @endforeach
             @else
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>✅ Diterima</h4>
-                    <ul>
-                        @forelse($diterima as $s)
-                            <li>{{ $s->nama }} - {{ $s->nisn }}</li>
-                        @empty
-                            <li>Belum ada data.</li>
-                        @endforelse
-                    </ul>
-                </div>
-
-                <div class="col-md-6">
-                    <h4>❌ Ditolak</h4>
-                    <ul>
-                        @forelse($ditolak as $s)
-                            <li>{{ $s->nama }} - {{ $s->nisn }}</li>
-                        @empty
-                            <li>Belum ada data.</li>
-                        @endforelse
-                    </ul>
-                </div>
-            </div>
+                <p class="text-muted">Belum ada pengumuman.</p>
             @endif
         </div>
     </div>

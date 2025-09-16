@@ -191,18 +191,22 @@
       </a>
     @endif
 
-    {{-- MENU SISWA --}}
-    @if(Auth::user()->role === 'siswa')
-      <a href="{{ route('siswa.form') }}" class="{{ request()->routeIs('siswa.form') ? 'active' : '' }}">
-        <i class="fa fa-file-alt fa-fw"></i> <span class="sidebar-text">Formulir</span>
-      </a>
-      <a href="{{ route('siswa.status') }}" class="{{ request()->routeIs('siswa.status') ? 'active' : '' }}">
-        <i class="fa fa-info-circle fa-fw"></i> <span class="sidebar-text">Status</span>
-      </a>
-      <a href="{{ route('pengumuman') }}" class="{{ request()->routeIs('pengumuman') ? 'active' : '' }}">
-        <i class="fa fa-bullhorn fa-fw"></i> <span class="sidebar-text">Pengumuman</span>
-      </a>
-    @endif
+{{-- MENU SISWA --}}
+@if(Auth::user()->role === 'siswa')
+  <a href="{{ route('siswa.dashboard') }}" class="{{ request()->routeIs('siswa.dashboard') ? 'active' : '' }}">
+    <i class="fa fa-home fa-fw"></i> <span class="sidebar-text">Dashboard</span>
+  </a>
+  <a href="{{ route('siswa.create') }}" class="{{ request()->routeIs('siswa.create') ? 'active' : '' }}">
+    <i class="fa fa-file-alt fa-fw"></i> <span class="sidebar-text">Formulir</span>
+  </a>
+  <a href="{{ route('siswa.status') }}" class="{{ request()->routeIs('siswa.status') ? 'active' : '' }}">
+    <i class="fa fa-info-circle fa-fw"></i> <span class="sidebar-text">Status</span>
+  </a>
+  <a href="{{ route('siswa.pengumuman') }}" class="{{ request()->routeIs('siswa.pengumuman') ? 'active' : '' }}">
+    <i class="fa fa-bullhorn fa-fw"></i> <span class="sidebar-text">Pengumuman</span>
+  </a>
+@endif
+
 
     {{-- LOGOUT --}}
     <div class="mt-auto p-2">
