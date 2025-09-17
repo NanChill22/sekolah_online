@@ -40,11 +40,11 @@
                     <label class="form-label">Asal Sekolah</label>
                     <input type="text" name="asal_sekolah" class="form-control" value="{{ old('asal_sekolah') }}" required>
                 </div>
-
+{{-- 
                 <div class="mb-3">
                     <label class="form-label">Upload Dokumen (PDF/DOC, max 4MB)</label>
                     <input type="file" name="file" class="form-control" required>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-paper-plane"></i> Kirim Pendaftaran
